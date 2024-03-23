@@ -1,8 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import JsonResponse
+from django.contrib.auth import authenticate,login,logout
+from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CreateUserForm
 import json
 import datetime
 from .models import *
+# from django import forms
 
 # Create your views here.
 
@@ -108,8 +113,38 @@ def processOrder(request):
 		print('user is not logged in..')
 	return JsonResponse('Payment Completed',safe=False)
 
-def login(request):
-	return render(request, 'store/login.html')
+def loginpage(request):
 
-def processLogin(request):
-	pass
+	if request.method == 'POST':
+		username=request.POST.get('username')
+		password=request.POST.get('password')
+
+		user=authenticate(request,username=username,password=password)
+
+		if user is not None:
+			login(request,user)
+			return redirect('store')
+		else:
+			messages.info(request,'Username OR Password is incorrect')
+	context={}
+	return render(request,'store/login.html',context)
+
+def logoutpage(request):
+	logout(request)
+	return redirect('loginpage')
+
+def registerpage(request):
+	form = CreateUserForm()	
+
+	if request.method =='POST':
+		form = CreateUserForm(request.POST)	
+		if form.is_valid():
+			form.save()
+			user=form.cleaned_data.get('username')
+			messages.success(request,"Account has been created for " +user)	
+
+			return redirect('loginpage')
+	
+	context={'form':form}
+	return render(request,'store/register.html',context)
+	
