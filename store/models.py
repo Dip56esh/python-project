@@ -9,7 +9,7 @@ class Customer(models.Model):
     email=models.EmailField(max_length=100,unique=False)
 
     def  __str__(self):
-        return self.name
+        return f"{self.name}"
 
 class Product(models.Model):
     name=models.CharField(max_length=200,null=True)
@@ -18,7 +18,7 @@ class Product(models.Model):
     image=models.ImageField(null=True,blank=True)
 
     def __str__(self):
-        return self.name
+        return f"{self.name}"
 
     @property
     def imageURL(self):
@@ -83,7 +83,7 @@ class  ShippingAddress(models.Model):
     date_added=models.DateTimeField(auto_now_add=True)
 
     def   __str__(self):
-        return self.address
+        return f"{self.address}"
 
 
 

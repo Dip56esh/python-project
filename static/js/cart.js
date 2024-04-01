@@ -1,4 +1,5 @@
-var upadteBtns=document.getElementsByClassName( "update-cart")
+
+var upadteBtns = document.getElementsByClassName("update-cart")
 
 for (var i = 0; i < upadteBtns.length; i++){
     upadteBtns[i].addEventListener('click', function () {
@@ -9,6 +10,8 @@ for (var i = 0; i < upadteBtns.length; i++){
         console.log('User:', user)
         if (user == 'AnonymousUser') {
             console.log('Not logged in..')
+            
+
         }
         else {
             updateUserOrder(productId,action)
