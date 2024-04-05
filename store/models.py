@@ -83,7 +83,7 @@ class  ShippingAddress(models.Model):
     date_added=models.DateTimeField(auto_now_add=True)
 
     def   __str__(self):
-        return f"{self.address}"
+        return f"{self.address},{self.customer}"
 
 
 
