@@ -2,7 +2,7 @@
 {% load static %}
 <html>
 <head>
-	<title>Ecommerce</title>
+	<title>Gadget Store</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
 
@@ -37,7 +37,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="{% url 'store' %}">Ecommerce</a>
+	  <a class="navbar-brand" href="{% url 'store' %}">Gadget Store</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -49,6 +49,7 @@
 	      </li>
 	 
 	    </ul>
+		<!-- <span class="hello-msg" style="font-size: 18px; color: #fff; margin-right: 20px;">Welcome,{{requset.user}}</span> -->
 	    <div class="form-inline my-2 my-lg-0">
 	     	<a href="{% url 'registerpage' %}"class="btn btn-warning">Sign in</a>
 
